@@ -70,4 +70,17 @@ function failNoty(event, jqXHR, options, jsExc) {
         type: 'error',
         layout: 'bottomRight'
     });
+
+function enable(checkBox, id) {
+    var enabled = checkBox.is(":checked");
+    $.ajax({
+        type: "POST",
+        url: ajaxUrl + id,
+        data: 'enabled=' + enabled,
+        success: function () {
+            checkBox.closest('tr').fadeTo(300, enabled ? 1 : 0.3);
+            successNoty(enabled ? 'Enabled' : 'Disabled');
+        }
+    });
+}
 }
