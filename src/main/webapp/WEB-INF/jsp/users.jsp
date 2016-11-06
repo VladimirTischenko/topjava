@@ -88,7 +88,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-offset-3 col-xs-9">
-                            <button type="button" class="btn btn-primary" onclick="save()"><fmt:message key="common.save"/></button>
+                            <button class="btn btn-primary" type="button" onclick="save()"><fmt:message key="common.save"/></button>
                         </div>
                     </div>
                 </form>
@@ -150,8 +150,8 @@
             ]
         });
         $(':checkbox').each(function () {
-            if(!$(this).is(":checked")){
-                this.closest('tr').css("opacity", 0.3);
+            if (!$(this).is(":checked")) {
+                $(this).closest('tr').css("opacity", 0.3);
             }
         });
         makeEditable();

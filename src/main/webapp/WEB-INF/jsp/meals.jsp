@@ -18,26 +18,26 @@
             <div class="view-box">
                 <form method="post" class="form-horizontal" role="form" id="filter">
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="startDate"><fmt:message key="meals.startDate"/></label>
+                        <label class="control-label col-sm-2" for="startDate"><fmt:message key="meals.startDate"/>:</label>
 
                         <div class="col-sm-2">
                             <input class="form-control" type="date" name="startDate" id="startDate">
                         </div>
 
-                        <label class="control-label col-sm-2" for="endDate"><fmt:message key="meals.endDate"/></label>
+                        <label class="control-label col-sm-2" for="endDate"><fmt:message key="meals.endDate"/>:</label>
 
                         <div class="col-sm-2">
                             <input class="form-control" type="date" name="endDate" id="endDate">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="startTime"><fmt:message key="meals.startTime"/></label>
+                        <label class="control-label col-sm-2" for="startTime"><fmt:message key="meals.startTime"/>:</label>
 
                         <div class="col-sm-2">
                             <input class="form-control" type="time" name="startTime" id="startTime">
                         </div>
 
-                        <label class="control-label col-sm-2" for="endTime"><fmt:message key="meals.endTime"/></label>
+                        <label class="control-label col-sm-2" for="endTime"><fmt:message key="meals.endTime"/>:</label>
 
                         <div class="col-sm-2">
                             <input class="form-control" type="time" name="endTime" id="endTime">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-8">
-                            <button class="btn btn-primary pull-right" type="button" onclick="updateTable()"><fmt:message key="meals.filter"/></button>
+                            <button class="btn btn-primary pull-right"  type="button" onclick="updateTable()"><fmt:message key="meals.filter"/></button>
                         </div>
                     </div>
                 </form>
@@ -64,8 +64,8 @@
                         <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.to.MealWithExceed"/>
                         <tr class="${meal.exceed ? 'exceeded' : 'normal'}">
                             <td>
-                                    <%--${meal.dateTime.toLocalDate()} ${meal.dateTime.toLocalTime()}--%>
-                                    <%--<%=TimeUtil.toString(meal.getDateTime())%>--%>
+                                    <%--<fmt:parseDate value="${meal.dateTime}" pattern="y-M-dd'T'H:m" var="parsedDate"/>--%>
+                                    <%--<fmt:formatDate value="${parsedDate}" pattern="yyyy.MM.dd HH:mm" />--%>
                                     ${fn:formatDateTime(meal.dateTime)}
                             </td>
                             <td>${meal.description}</td>
@@ -90,7 +90,7 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="post" id="detailsForm">
-                    <input type="text" hidden="hidden" id="id" name="id">
+                    <input type="hidden" id="id" name="id">
 
                     <div class="form-group">
                         <label for="dateTime" class="control-label col-xs-3"><fmt:message key="meals.dateTime"/></label>
@@ -100,27 +100,26 @@
                                    name="dateTime" placeholder="<fmt:message key="meals.dateTime"/>">
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="description" class="control-label col-xs-3"><fmt:message key="meals.description"/></label>
+                        <label for="description" class="control-label col-xs-3"><fmt:message
+                                key="meals.description"/></label>
 
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="description"
-                                   name="description" placeholder="<fmt:message key="meals.description"/>">
+                            <input type="text" class="form-control" id="description" name="description"
+                                   placeholder="<fmt:message key="meals.description"/>">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="calories" class="control-label col-xs-3"><fmt:message key="meals.calories"/></label>
 
                         <div class="col-xs-9">
-                            <input type="number" class="form-control" id="calories" name="calories" placeholder="1000">
+                            <input type="number" class="form-control" id="calories" name="calories"
+                                   placeholder="1000">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="col-xs-offset-3 col-xs-9">
-                            <button type="button" class="btn btn-primary" onclick="save()"><fmt:message key="common.save"/></button>
+                            <button class="btn btn-primary" type="button" onclick="save()"><fmt:message key="common.save"/></button>
                         </div>
                     </div>
                 </form>
@@ -136,8 +135,7 @@
 <script type="text/javascript" src="webjars/noty/2.3.8/js/noty/packaged/jquery.noty.packaged.min.js"></script>
 <script type="text/javascript" src="resources/js/datatablesUtil.js"></script>
 <script type="text/javascript">
-
-    var ajaxUrl = 'ajax/meals/';
+    var ajaxUrl = 'ajax/profile/meals/';
     var datatableApi;
 
     function updateTable() {
