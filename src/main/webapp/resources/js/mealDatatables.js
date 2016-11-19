@@ -58,6 +58,8 @@ $(function () {
         "initComplete": makeEditable
     });
 
+    $.datetimepicker.setLocale(localCode);
+
     var startDate = $('#startDate');
     var endDate = $('#endDate');
     startDate.datetimepicker({
